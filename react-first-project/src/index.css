@@ -117,6 +117,7 @@ code {
 
 /* PRODUCT CARD  */
 
+.recipe-card,
 .product-card {
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -127,6 +128,7 @@ code {
   transition: transform 0.2s ease;
 }
 
+.recipe-card,
 .product-card:hover {
   transform: translateY(-5px);
 }
@@ -138,6 +140,7 @@ code {
   padding: 30px;
 }
 
+.recipe-card,
 .product-card img {
   width: 100%;
   height: 180px;
@@ -149,6 +152,7 @@ code {
   background: var(--border);
   padding: 6px;
 }
+.recipe-card,
 .product-card:hover img {
   transform: scale(1.05);
   filter: brightness(1.05);
@@ -167,6 +171,7 @@ code {
   color: white;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
+
 
 .product-card button:hover {
   transform: translateY(-2px);
@@ -244,3 +249,22 @@ code {
 .btn:active {
   transform: scale(0.97);
 }
+
+/* RECIPE CARD  */
+ /*.recipe-card{ 
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 300px;
+}
+
+.recipe-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+} */

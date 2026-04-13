@@ -1,6 +1,9 @@
 import Button from './components/Button'
 import ProductCard from './components/ProductCard'
 import PRODUCTS from './data/product'
+import RecipeCard  from './components/RecipeCard'
+import RECIPE from './data/recipe'
+
 
 
 // components
@@ -22,7 +25,14 @@ function App() {
     <div className="App">
 
 
-
+<Button
+        text="Alert Hello!"
+        click={alertHello}
+      />
+      <Button
+        text="Alert Goodbye!"
+        click={alertGoodbye}
+      />
 
 
       {
@@ -35,15 +45,18 @@ function App() {
             />
           ))
       }
+      {
+        RECIPE.map(
+          (recipe, index) => (
+            <RecipeCard
+              key={recipe.id}
+              recipe={recipe}
+            />
+          ))
+      }
 
-      <Button
-        text="Alert Hello!"
-        click={alertHello}
-      />
-      <Button
-        text="Alert Goodbye!"
-        click={alertGoodbye}
-      />
+
+      
 
 
     </div>
