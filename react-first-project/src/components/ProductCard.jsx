@@ -4,7 +4,7 @@ function ProductCard({
     addToCart
 }) {
 
-console.log(product);
+
 
     return (
         <div className="product-card">
