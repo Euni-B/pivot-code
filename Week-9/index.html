@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="card">
+
+        <form id="loginForm" onsubmit="handleSubmit(event)">
+
+            <label for="username">Username</label>
+            <input id="username" type="text" placeholder="Enter username">
+
+            <label for="password">Password</label>
+            <input id="password" type="text" placeholder="Enter password">
+
+            <p id="errorMessage" style="color:red"></p>
+
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+    <!-- Link to JavaScript -->
+    <script src="index.js"></script>
+</body>
+
+</html> 
