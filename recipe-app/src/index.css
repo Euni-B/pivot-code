@@ -1,0 +1,56 @@
+body {
+  background-color: rgb(182, 178, 173);
+  display: flex;
+  flex-wrap: wrap;        /* allows multiple rows */
+  justify-content: center; /* center horizontally */
+  gap: 20px;              /* space between cards */
+  padding: 20px;
+}
+
+
+.card {
+  background: rgb(255, 254, 254);
+  border-radius: 15px;
+  padding: 20px;
+  width: 260px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 10px;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* NEW: image styling */
+.card-image {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+/* NEW: title styling */
+.card-title {
+  margin-bottom: 10px;
+}
+
+.description {
+  color: #555;
+  font-size: 14px;
+}
+
+.cook-time {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.card ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.card li {
+  font-size: 14px;
+}
+
