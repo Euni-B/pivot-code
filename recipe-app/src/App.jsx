@@ -1,80 +1,55 @@
-import Counter from "./components/Counter";
 import recipes from "./data/recipes";
-import RecipeCard from "./components/RecipeCard";
-import FavoriteCard from "./components/FavoriteCard";
+import FavoriteCard from "./components/Favorites/FavoriteCard";
+import SearchBar from "./components/SearchBar";
+import RecipeList from "./components/Recipe/RecipeList";
 import { useState } from "react";
 
-
 function App() {
-
+  // search state
   const [search, setSearch] = useState("");
 
-  // favorites functionality 
+  // favorites state
   const [favorites, setFavorites] = useState([]);
+
+  // toggle favorite
   const toggleFavorite = (id) => {
     setFavorites((prev) =>
       prev.includes(id)
-        ? prev.filter((favId) => favId !== id) // remove
-        : [...prev, id] // add
+        ? prev.filter((favId) => favId !== id)
+        : [...prev, id]
     );
   };
 
-
-  // search functionality 
-  const [filteredRecipes, setFilteredRecipes] = useState(recipes);
-  const handleSearch = () => {
-    const results = recipes.filter((recipe) =>
-      recipe.name.toLowerCase().includes(search.toLowerCase()) ||
-      recipe.description.toLowerCase().includes(search.toLowerCase()) ||
-      recipe.cookTime.toLowerCase().includes(search.toLowerCase()) ||
-      recipe.ingredients.some((item) =>
-        item.toLowerCase().includes(search.toLowerCase())
-      )
-    );
-
-    setFilteredRecipes(results);
-  };
+  // 🔥 derived state (no useState needed)
+  const filteredRecipes = recipes.filter((recipe) =>
+    recipe.name.toLowerCase().includes(search.toLowerCase()) ||
+    recipe.description.toLowerCase().includes(search.toLowerCase()) ||
+    recipe.cookTime.toLowerCase().includes(search.toLowerCase()) ||
+    recipe.ingredients.some((item) =>
+      item.toLowerCase().includes(search.toLowerCase())
+    )
+  );
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Search recipes..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+      {/* Search */}
+      <SearchBar search={search} setSearch={setSearch} />
+
+      {/* Favorites Section */}
+      <FavoriteCard
+        recipes={filteredRecipes}
+        favorites={favorites}
+        toggleFavorite={toggleFavorite}
       />
-     <button onClick={handleSearch}>Search</button>
-{/* favorites map  */}
-                               
-             <FavoriteCard
-              recipes={filteredRecipes}
-              favorites={favorites}
-              toggleFavorite={toggleFavorite}
-            />
-     
 
-      <h2></h2>
-      <div className="card-container">
-        {filteredRecipes
-          .filter((recipe) => !favorites.includes(recipe.id))
-          .map((recipe) => (
-            <RecipeCard
-              key={recipe.id}
-              recipe={recipe}
-              favorites={favorites}
-              toggleFavorite={toggleFavorite}
-            />
-          ))}
-      </div>
+      {/* All Recipes */}
+      <RecipeList
+        recipes={filteredRecipes}
+        favorites={favorites}
+        toggleFavorite={toggleFavorite}
+      />
     </div>
-
-
-
-
   );
 }
-
-
-
 
 export default App;
