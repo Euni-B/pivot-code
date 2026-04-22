@@ -1,28 +1,13 @@
-function FavoriteCard({ recipes, favorites, toggleFavorite }) {
-  const favoriteRecipes = recipes.filter((recipe) =>
-    favorites.includes(recipe.id)
-  );
-
+function FavoriteCard({ recipe, toggleFavorite }) {
   return (
     <div>
-      <h2>Favorites</h2>
+      <h3>{recipe.name}</h3>
+      <img src={recipe.image} alt={recipe.name} width="150" />
+      <p>Rating: {recipe.rating}</p>
 
-      {favoriteRecipes.length === 0 ? (
-        <p>No favorites yet ❤️</p>
-      ) : (
-        <div className="favorite-container">
-          {favoriteRecipes.map((recipe) => (
-            <div key={recipe.id} className="favorite-card">
-              <img src={recipe.image} alt={recipe.name} />
-              <p>{recipe.name}</p>
-
-              <button onClick={() => toggleFavorite(recipe.id)}>
-                ❤️
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
+      <button onClick={() => toggleFavorite(recipe.id)}>
+        Remove ❤️
+      </button>
     </div>
   );
 }
