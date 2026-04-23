@@ -1,13 +1,19 @@
 import FavoriteCard from "./FavoriteCard";
 
-function FavoritesSection({ recipes, favorites, toggleFavorite }) {
+function FavoritesSection({ 
+  recipes, 
+  favorites , 
+  toggleFavorite }) {
   // filter recipes to only favorites
   const favoriteRecipes = recipes.filter((recipe) =>
     favorites.includes(recipe.id)
   );
 
   return (
-    <div>
+    <div style={{
+      display: "flex",
+      flexWrap: "wrap"
+    }}>
       <h2>Favorites</h2>
 
       {favoriteRecipes.length === 0 ? (
@@ -17,6 +23,7 @@ function FavoritesSection({ recipes, favorites, toggleFavorite }) {
           <FavoriteCard
             key={recipe.id}
             recipe={recipe}
+            favorites={favorites}
             toggleFavorite={toggleFavorite}
           />
         ))

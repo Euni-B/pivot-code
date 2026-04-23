@@ -4,8 +4,8 @@ import FavoritesSection from "./components/Favorites/FavoritesSection";
 import SearchBar from "./components/SearchBar";
 import RecipeList from "./components/Recipe/RecipeList";
 import TopThree from "./components/TopThree";
+import SortButton from "./components/SortButton";
 import { useState } from "react";
-// import { useState, useEffect } from "react";
 
 function App() {
   // search state
@@ -16,6 +16,9 @@ function App() {
 
   // rating state 
   const [topRated, setTopRated] = useState([]);
+
+  // sort state
+  const [sortOrder, setSortOrder] = useState("newest");
 
   // toggle favorite
   const toggleFavorite = (id) => {
@@ -36,44 +39,55 @@ function App() {
     )
   );
 
-  // top three rated recipes 
-  // useEffect(() => {
-  //   const sorted = [...recipes]
-  //     .sort((a, b) => b.rating - a.rating)
-  //     .slice(0, 3);
-
-  //   setTopRated(sorted);
-  // }, []);
-
+  // sort recipes by date
+  const sortedRecipes = [...filteredRecipes].sort((a, b) => {
+    if (sortOrder === "newest") {
+      return new Date(b.dateCreated) - new Date(a.dateCreated);
+    } else {
+      return new Date(a.dateCreated) - new Date(b.dateCreated);
+    }
+  });
 
 
   return (
-    <div>
-      {/* Search */}
-      <SearchBar search={search} setSearch={setSearch} />
+    <div className="app-container">
 
-      {/* Favorites Section */}
-      <FavoritesSection
-        recipes={recipes}
-        favorites={favorites}
-        toggleFavorite={toggleFavorite}
-      />
+      {/* HEADER */}
+      <div className="controls">
+        <SearchBar search={search} setSearch={setSearch} />
+        <SortButton sortOrder={sortOrder} setSortOrder={setSortOrder} />
+      </div>
 
-        {/* Top Three */}
-        <TopThree
-          recipes={recipes}
-          favorites={favorites}
-          toggleFavorite={toggleFavorite}
-        />
+      {/* DASHBOARD ROW */}
+      <div className="dashboard-row">
+        <div className="top-three-section">
+          <TopThree
+            recipes={recipes}
+            favorites={favorites}
+            toggleFavorite={toggleFavorite}
+          />
+        </div>
 
-        {/* All Recipes */}
+        <div className="favorites-section">
+          <FavoritesSection
+            recipes={recipes}
+            favorites={favorites}
+            toggleFavorite={toggleFavorite}
+          />
+        </div>
+      </div>
+
+      {/* ALL RECIPES */}
+      <div className="all-recipes-section">
         <RecipeList
-          recipes={filteredRecipes}
+          recipes={sortedRecipes}
           favorites={favorites}
           toggleFavorite={toggleFavorite}
         />
       </div>
-      );
+
+    </div>
+  );
 }
 
-      export default App;
+export default App;

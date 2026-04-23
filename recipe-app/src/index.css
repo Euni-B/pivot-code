@@ -1,4 +1,4 @@
-body {
+ body {
   background-color: antiquewhite;
 }
 
@@ -45,7 +45,7 @@ body {
 }
 
 /* fav button styling  */
-/* ❤️ Favorite button */
+ /* ❤️ Favorite button */
 .fav-btn {
   background: #f3f3f3;
   border: none;
@@ -58,7 +58,7 @@ body {
   background: #e6e6e6;
 }
 
-/* outer track */
+outer track
 .toggle-switch {
   width: 50px;
   height: 26px;
@@ -70,30 +70,30 @@ body {
 }
 
 /* when ON */
-.toggle-switch:has(.thumb.on) {
+ .toggle-switch:has(.thumb.on) {
   background: #4f46e5;
-}
-
+} 
+ 
 /* sliding circle */
-.thumb {
+ .thumb {
   width: 22px;
-  height: 22px;
+   height: 22px;
   background: white;
   border-radius: 50%;
   position: absolute;
   top: 2px;
   left: 2px;
   transition: transform 0.3s ease;
-}
+} 
 
 /* move right */
-.thumb.on {
+ .thumb.on {
   transform: translateX(24px);
 }
 
-/* ingredient list  */
-.card ul {
-  list-style: none;
+/* ingredient list    */
+.card ul { 
+   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
@@ -104,7 +104,7 @@ body {
 .card li {
   font-size: 13px;
   color: #333;
-}
+} 
 
 .card-container {
   display: grid;
@@ -112,7 +112,7 @@ body {
   gap: 20px;
   padding: 20px;
   justify-items: center;
-}
+} 
 
 @media (max-width: 600px) {
   .card-container {
@@ -122,9 +122,9 @@ body {
 .favorite-container {
   display: flex;
   gap: 12px;
-  overflow-x: auto;
-  padding: 10px 0;
-}
+   overflow-x: auto; 
+   padding: 10px 0; 
+ }
 
 .favorite-card {
   width: 120px;
@@ -137,4 +137,78 @@ body {
   height: 80px;
   object-fit: cover;
   border-radius: 10px;
+}  
+  .app-container {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+/* Top controls */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Dashboard row (Top 3 + Favorites) */
+.dashboard-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* Each section takes equal space */
+.top-three-section,
+.favorites-section {
+  flex: 1;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* All recipes full width */
+.all-recipes-section {
+  margin-top: 20px;
+}
+
+/* Cards layout */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.top-three-section .card-container,
+.favorites-section .card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.top-three-section .card,
+.favorites-section .card {
+  flex: 1 1 45%;
+}
+.recipe-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.sort-button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2f80ed;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.sort-button:hover {
+  background-color: #1c6dd0;
+  transform: translateY(-1px);
+}
+.sort-button:active {
+  transform: scale(0.98);
 }

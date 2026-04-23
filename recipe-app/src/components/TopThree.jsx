@@ -1,4 +1,5 @@
-import RecipeCard from "./Recipe/RecipeCard";
+import FavoriteCard from "./Favorites/FavoriteCard";
+
 
 function TopThree({ recipes, favorites, toggleFavorite }) {
   const topThree = [...recipes]
@@ -7,15 +8,17 @@ function TopThree({ recipes, favorites, toggleFavorite }) {
 
   return (
     <div>
-      <h2>Top Three ⭐</h2>
+      <h2>Top Three </h2>
+     
 
-      <div className="card-container">
+      <div style ={{
+         display: "flex",
+         gap: "20px",
+         flexWrap: "wrap"}}>
         {topThree.map((recipe) => (
-          <RecipeCard
-            key={recipe.id}
-            recipe={recipe}
-            favorites={favorites}
-            toggleFavorite={toggleFavorite}
+          <FavoriteCard
+          key={recipe.id}
+          recipe={recipe}
           />
         ))}
       </div>

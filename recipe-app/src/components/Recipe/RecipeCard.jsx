@@ -18,7 +18,7 @@ function RecipeCard({ recipe, favorites, toggleFavorite }) {
                 {isFavorite ? "❤️" : "🤍"}
             </button>
 
-            <img src={recipe.image} alt={recipe.name} className="card-image" />
+            <img src={recipe.image} alt={recipe.name} className="recipe-img" />
 
             <p className="description">{recipe.description}</p>
             <p className="cook-time">Cook time: {recipe.cookTime}</p>
@@ -37,6 +37,7 @@ function RecipeCard({ recipe, favorites, toggleFavorite }) {
                     ))}
                 </ul>
             )}
+            <p>Date: {recipe.dateCreated}</p>
         </div>
     );
 }
