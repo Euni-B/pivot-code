@@ -1,4 +1,5 @@
-import FavoriteCard from "./Favorites/FavoriteCard";
+import FavoriteCard from "../Favorites/FavoriteCard";
+import "./TopThree.css";
 
 
 function TopThree({ recipes, favorites, toggleFavorite }) {
@@ -11,10 +12,7 @@ function TopThree({ recipes, favorites, toggleFavorite }) {
       <h2>Top Three </h2>
      
 
-      <div style ={{
-         display: "flex",
-         gap: "20px",
-         flexWrap: "wrap"}}>
+      <div className=" section section-grid">
         {topThree.map((recipe) => (
           <FavoriteCard
           key={recipe.id}

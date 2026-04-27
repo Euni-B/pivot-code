@@ -1,45 +1,65 @@
 import { useState } from "react";
+import "./RecipeCard.css";
 
 function RecipeCard({ recipe, favorites, toggleFavorite }) {
-    const isFavorite = favorites.includes(recipe.id);
+  const isFavorite = favorites.includes(recipe.id);
 
-    const [showIngredients, setShowIngredients] = useState(false);
-    const [rating, setRating] = useState(recipe.rating);
+  const [showIngredients, setShowIngredients] = useState(false);
+  const [rating, setRating] = useState(recipe.rating);
 
-    return (
-        <div className="card">
-            <h2 className="card-title">{recipe.name}</h2>
-            <p>
-                Difficulty: <strong>{recipe.difficulty}</strong>
-            </p>
-            <p>{"⭐".repeat(rating)}{"☆".repeat(5 - rating)}</p>
+  return (
+    <div className="section section-grid">
+      
+      {/* IMAGE + OVERLAY BUTTON */}
+      <div className="card-img-wrapper">
+        <img src={recipe.image} alt={recipe.name} />
 
-            <button onClick={() => toggleFavorite(recipe.id)}>
-                {isFavorite ? "❤️" : "🤍"}
-            </button>
+        <button
+          className="favorite-btn"
+          onClick={() => toggleFavorite(recipe.id)}
+        >
+          {isFavorite ? "❤️" : "🤍"}
+        </button>
+      </div>
 
-            <img src={recipe.image} alt={recipe.name} className="recipe-img" />
+      {/* CONTENT */}
+      <div className="card-content">
+        <h2 className="card-title">{recipe.name}</h2>
 
-            <p className="description">{recipe.description}</p>
-            <p className="cook-time">Cook time: {recipe.cookTime}</p>
+        <p className="difficulty">
+          Difficulty: <strong>{recipe.difficulty}</strong>
+        </p>
 
-            <div
-                className="toggle-switch"
-                onClick={() => setShowIngredients((prev) => !prev)}
-            >
-                <div className={showIngredients ? "thumb on" : "thumb"}></div>
-            </div>
+        <p className="rating">
+          {"⭐".repeat(rating)}
+          {"☆".repeat(5 - rating)}
+        </p>
 
-            {showIngredients && (
-                <ul>
-                    {recipe.ingredients.map((item, index) => (
-                        <li key={index}>{item}</li>
-                    ))}
-                </ul>
-            )}
-            <p>Date: {recipe.dateCreated}</p>
+        <p className="description">{recipe.description}</p>
+
+        <p className="cook-time">Cook time: {recipe.cookTime}</p>
+
+        {/* TOGGLE */}
+        <div
+          className="toggle-switch"
+          onClick={() => setShowIngredients((prev) => !prev)}
+        >
+          <div className={showIngredients ? "thumb on" : "thumb"}></div>
         </div>
-    );
+
+        {/* INGREDIENTS */}
+        {showIngredients && (
+          <ul className="ingredients">
+            {recipe.ingredients.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        )}
+
+        <p className="date">Date: {recipe.dateCreated}</p>
+      </div>
+    </div>
+  );
 }
 
 export default RecipeCard;

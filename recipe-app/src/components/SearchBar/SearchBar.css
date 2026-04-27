@@ -1,0 +1,34 @@
+/* CONTAINER */
+.search-bar {
+
+  flex: 0 1 320px;  /* 🔥 fixed ideal width, can shrink */
+  min-width: 220px;
+}
+
+.search-bar input {
+  width: 90%;
+  min-width: 0; /* 🔥 critical for shrinking inside flex */
+  padding: 10px 14px;
+
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+
+  background: var(--card);
+  color: var(--text);
+
+  transition: all 0.2s ease;
+}
+/* PLACEHOLDER */
+.search-bar input::placeholder {
+  color: var(--subtext);
+}
+
+/* FOCUS STATE (🔥 important for professional feel) */
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}

@@ -1,27 +1,28 @@
-import FavoritesSection from "./FavoritesSection";
+import "./FavoriteCard.css";
 
-function FavoriteCard({ recipe,
+function FavoriteCard({
+   recipe, 
    favorites = null,
-   toggleFavorite = null }) {
+    toggleFavorite = null }) {
+      
   return (
-    <div 
-    style = {
-      {backgroundColor: "white" ,
-        borderRadius: "10px",
-        padding: "10px",
-        margin: "10px",
-        borderWidth: "1px",
-        borderColor: "black",
-        
+    <div className="card">
+      <div className="card-img-wrapper">
+        <img src={recipe.image} alt={recipe.name} />
+        {favorites && (
+          <button
+            className="favorite-btn"
+            onClick={() => toggleFavorite(recipe.id)}
+          >
+            ❤️
+          </button>
+        )}
+      </div>
 
-    }}>
-      <h3>{recipe.name}</h3>
-      <img src={recipe.image} alt={recipe.name} className="recipe-img" />
-      <p>Rating: {recipe.rating}</p>
-
-      {favorites && <button onClick={() => toggleFavorite(recipe.id)}>
-        ❤️
-      </button>}
+      <div className="card-content">
+        <h3>{recipe.name}</h3>
+        <p className="rating">⭐ {recipe.rating}</p>
+      </div>
     </div>
   );
 }

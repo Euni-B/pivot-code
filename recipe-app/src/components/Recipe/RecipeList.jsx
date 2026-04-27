@@ -5,7 +5,7 @@ function RecipeList({ recipes, favorites, toggleFavorite }) {
     <div>
       <h2>Recipes</h2>
 
-      <div className="card-container">
+      <div className="section section-grid">
         {recipes.map((recipe) => (
           <RecipeCard
             key={recipe.id}

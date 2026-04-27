@@ -1,11 +1,13 @@
 import recipes from "./data/recipes";
 import FavoriteCard from "./components/Favorites/FavoriteCard";
 import FavoritesSection from "./components/Favorites/FavoritesSection";
-import SearchBar from "./components/SearchBar";
+import SearchBar from "./components/SearchBar/SearchBar";
 import RecipeList from "./components/Recipe/RecipeList";
-import TopThree from "./components/TopThree";
-import SortButton from "./components/SortButton";
+import TopThree from "./components/TopThree/TopThree";
+import SortButton from "./components/SortButton/SortButton";
 import { useState } from "react";
+
+
 
 function App() {
   // search state
@@ -20,6 +22,8 @@ function App() {
   // sort state
   const [sortOrder, setSortOrder] = useState("newest");
 
+  const allRecipes = recipes;
+
   // toggle favorite
   const toggleFavorite = (id) => {
     setFavorites((prev) =>
@@ -30,14 +34,17 @@ function App() {
   };
 
   //  derived state (no useState needed)
-  const filteredRecipes = recipes.filter((recipe) =>
-    recipe.name.toLowerCase().includes(search.toLowerCase()) ||
-    recipe.description.toLowerCase().includes(search.toLowerCase()) ||
-    recipe.cookTime.toLowerCase().includes(search.toLowerCase()) ||
-    recipe.ingredients.some((item) =>
-      item.toLowerCase().includes(search.toLowerCase())
-    )
-  );
+  const filteredRecipes =
+    search.trim() === ""
+      ? recipes
+      : recipes.filter((recipe) =>
+        recipe.name.toLowerCase().includes(search.toLowerCase()) ||
+        recipe.description.toLowerCase().includes(search.toLowerCase()) ||
+        String(recipe.cookTime).toLowerCase().includes(search.toLowerCase()) ||
+        recipe.ingredients.some((item) =>
+          item.toLowerCase().includes(search.toLowerCase())
+        )
+      );
 
   // sort recipes by date
   const sortedRecipes = [...filteredRecipes].sort((a, b) => {
@@ -48,15 +55,31 @@ function App() {
     }
   });
 
-
   return (
-    <div className="app-container">
+    <div >
 
       {/* HEADER */}
       <div className="controls">
         <SearchBar search={search} setSearch={setSearch} />
         <SortButton sortOrder={sortOrder} setSortOrder={setSortOrder} />
       </div>
+
+      {/* SEARCH RESULTS */}
+      {search.trim() !== "" && (
+        <div className="search-results-section">
+          <h2>Search Results</h2>
+
+          {filteredRecipes.length > 0 ? (
+            <RecipeList
+              recipes={filteredRecipes}
+              favorites={favorites}
+              toggleFavorite={toggleFavorite}
+            />
+          ) : (
+            <p>No recipes found.</p>
+          )}
+        </div>
+      )}
 
       {/* DASHBOARD ROW */}
       <div className="dashboard-row">
@@ -79,8 +102,10 @@ function App() {
 
       {/* ALL RECIPES */}
       <div className="all-recipes-section">
+        <h2>All Recipes</h2>
+
         <RecipeList
-          recipes={sortedRecipes}
+          recipes={recipes}
           favorites={favorites}
           toggleFavorite={toggleFavorite}
         />

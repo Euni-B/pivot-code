@@ -1,0 +1,33 @@
+.sort-button {
+  
+  flex: 0 0 auto;   /* 🔥 NEVER grows or shrinks */
+
+
+}
+
+.sort-button button {
+  align-self: right; /* 🔥 aligns to the right edge of the controls container */
+  padding: 10px 14px;
+
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+
+  background: white;
+  color: var(--text);
+
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+
+  cursor: pointer;
+}
+/* FOCUS STATE (matches search bar glow) */
+.sort-button button:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}
+
+/* HOVER */
+.sort-button select:hover {
+  border-color: #d1d5db;
+}

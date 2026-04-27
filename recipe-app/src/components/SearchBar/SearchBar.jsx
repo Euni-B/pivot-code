@@ -1,7 +1,9 @@
+import "./SearchBar.css"; 
+
 function SearchBar({ search, setSearch }) {
   return (
-    <div>
-      <h2>Search</h2>
+    <div className="search-bar">
+      
       <input
         type="text"
         placeholder="Search recipes..."

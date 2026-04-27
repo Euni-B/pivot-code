@@ -10,10 +10,7 @@ function FavoritesSection({
   );
 
   return (
-    <div style={{
-      display: "flex",
-      flexWrap: "wrap"
-    }}>
+    <div className="section-grid">
       <h2>Favorites</h2>
 
       {favoriteRecipes.length === 0 ? (
