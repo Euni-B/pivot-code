@@ -8,8 +8,8 @@ function RecipeCard({ recipe, favorites, toggleFavorite }) {
   const [rating, setRating] = useState(recipe.rating);
 
   return (
-    <div className="section section-grid">
-      
+    <div className="card section section-grid">
+
       {/* IMAGE + OVERLAY BUTTON */}
       <div className="card-img-wrapper">
         <img src={recipe.image} alt={recipe.name} />
@@ -47,14 +47,16 @@ function RecipeCard({ recipe, favorites, toggleFavorite }) {
           <div className={showIngredients ? "thumb on" : "thumb"}></div>
         </div>
 
-        {/* INGREDIENTS */}
-        {showIngredients && (
-          <ul className="ingredients">
+        {/* ✅ FIXED INGREDIENTS */}
+        <div className={`ingredients ${showIngredients ? "open" : ""}`}>
+          <ul>
             {recipe.ingredients.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li key={index}  style={{ "--i": index + 1 }}>
+                {item}
+              </li>
             ))}
           </ul>
-        )}
+        </div>
 
         <p className="date">Date: {recipe.dateCreated}</p>
       </div>
