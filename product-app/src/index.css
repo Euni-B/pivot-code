@@ -18,3 +18,34 @@
   height: 150px;
   object-fit: contain;
 }
+
+.product-card h3 {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+/* SEARCHBAR  */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 12px;
+
+  width: 300px;
+  margin: 20px;
+  background: white;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+.icon {
+  font-size: 16px;
+  color: gray;
+}
