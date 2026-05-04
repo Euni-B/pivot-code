@@ -2,6 +2,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #b6b5b5;
+
 }
 
 .product-grid {
@@ -10,19 +11,41 @@ body {
   gap: 20px;
   padding: 20px;
 }
-/* SEARCHBAR  */
+
+/* HOME HEADER */
+.home-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+  gap: 20px;
+  background: #b3b1b1;
+  border-bottom: 1px solid #eee;
+}
+
+.home-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* SEARCH BAR */
 .search-bar {
   display: flex;
   align-items: center;
   gap: 8px;
 
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px 14px;
 
-  width: 300px;
-  margin: 20px;
+  width: 320px;
   background: white;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .search-bar input {
@@ -30,6 +53,15 @@ body {
   outline: none;
   width: 100%;
   font-size: 14px;
+}
+
+.search-bar button {
+  border: none;
+  background: black;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .icon {

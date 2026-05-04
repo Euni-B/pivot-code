@@ -1,3 +1,6 @@
+import "./ProductCard.css";
+
+
 function ProductCard({ product }) {
   let stockStatus = "";
 

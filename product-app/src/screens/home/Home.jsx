@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ProductCard from "../../components/product-card/ProductCard";
+import ProductCard from "../product-card/ProductCard";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
@@ -19,30 +19,30 @@ function Home() {
 
   // ASYNC gives ability to AWAIT
   useEffect(() => {
-  const fetchProducts = async () => {
-    setLoading(true);
-    setError(null);
+    const fetchProducts = async () => {
+      setLoading(true);
+      setError(null);
 
-    try {
-      let url = "https://dummyjson.com/products";
+      try {
+        let url = "https://dummyjson.com/products";
 
-      if (query) {
-        url = `https://dummyjson.com/products/search?q=${query}`;
+        if (query) {
+          url = `https://dummyjson.com/products/search?q=${query}`;
+        }
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        setProducts(data.products);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
       }
+    };
 
-      const res = await fetch(url);
-      const data = await res.json();
-
-      setProducts(data.products);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchProducts();
-}, [query]);
+    fetchProducts();
+  }, [query]);
 
 
   // loading state ui 
@@ -66,9 +66,10 @@ function Home() {
   }
 
   return (
-    <div>
+    <div className="home-container">
+    <div className="home-header">
       <h1>Product Store</h1>
-      {/* SEARCHBAR  */}
+
       <div className="search-bar">
         <span>🔍</span>
         <input
@@ -79,23 +80,24 @@ function Home() {
         />
         <button onClick={handleSearch}>Search</button>
       </div>
-
-{/* PRODUCT GRID */}
-      <div className="product-grid">
-        {products.map(product => (
-          <Link 
-          key={product.id}
-          to={`product/${product.id}`}
-          style={{ textDecoration: "none"}}>
-          <ProductCard
-            key={product.id}
-            product={product} 
-            />
-          </Link>
-
-        ))}
-      </div>
     </div>
+
+{/* PRODUCT GRID */ }
+  <div className="product-grid">
+    {products.map(product => (
+      <Link
+        key={product.id}
+        to={`product/${product.id}`}
+        style={{ textDecoration: "none" }}>
+        <ProductCard
+          key={product.id}
+          product={product}
+        />
+      </Link>
+
+    ))}
+  </div>
+    </div >
   );
 }
 
