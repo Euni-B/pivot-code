@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../../components/product-card/ProductCard";
+import { Link } from "react-router-dom";
+import "./Home.css";
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -10,7 +12,7 @@ function Home() {
 
 
   const handleSearch = () => {
-    setQuery(search); // 🔥 THIS triggers everything
+    setQuery(search); // THIS triggers everything
   };
 
 
@@ -78,11 +80,18 @@ function Home() {
         <button onClick={handleSearch}>Search</button>
       </div>
 
+{/* PRODUCT GRID */}
       <div className="product-grid">
         {products.map(product => (
+          <Link 
+          key={product.id}
+          to={`product/${product.id}`}
+          style={{ textDecoration: "none"}}>
           <ProductCard
             key={product.id}
-            product={product} />
+            product={product} 
+            />
+          </Link>
 
         ))}
       </div>

@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #b6b5b5;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+/* SEARCHBAR  */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 12px;
+
+  width: 300px;
+  margin: 20px;
+  background: white;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+.icon {
+  font-size: 16px;
+  color: gray;
+}
