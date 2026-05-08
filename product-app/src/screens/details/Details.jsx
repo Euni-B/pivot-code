@@ -1,11 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { useCart } from "../../context/CartContext";
 import "./Details.css";
 
 function Details() {
   const { id } = useParams();
   const [product, setProduct] = useState();
   const [selectedImage, setSelectedImage] = useState("");
+  const { addToCart } = useCart();
+
 
   useEffect(() => {
     fetch("https://dummyjson.com/products/" + id)
@@ -29,11 +33,11 @@ function Details() {
   }
 
   return (
-    <div>
+    <div className="details-page">
       {product ? (
-        <>
-          <div className="details-container">
+        <div className="details-card">
 
+          <div className="details-container">
             {/* LEFT: IMAGE GALLERY */}
             <div className="image-section">
               <img
@@ -58,23 +62,40 @@ function Details() {
             {/* RIGHT: PRODUCT INFO */}
             <div className="info-section">
               <h1>{product.title}</h1>
-
               <p className="brand">{product.brand}</p>
-
               <p className="rating">⭐ {product.rating}</p>
-
               <p className="price">${product.price}</p>
 
-              <p className="stock">{stockStatus}</p>
+              <p
+                className={`stock ${product.stock === 0
+                  ? "out-of-stock"
+                  : product.stock < 5
+                    ? "low-stock"
+                    : "in-stock"
+                  }`}
+              >
+                {stockStatus}
+              </p>
 
               <p className="description">{product.description}</p>
 
-              <button className="buy-btn">Add to Cart</button>
-            </div>
+              <button
+                className="buy-btn"
+                onClick={() => {
+                  addToCart(product);
 
+                  toast.success("Added to cart 🛒", {
+                    position: "top-right",
+                    autoClose: 1500,
+                  });
+                }}
+              >
+                Add to Cart
+              </button>
+            </div>
           </div>
 
-          {/* REVIEWS */}
+          {/* REVIEWS (still inside card) */}
           <div className="reviews-section">
             <h2>Customer Reviews</h2>
 
@@ -86,7 +107,8 @@ function Details() {
               </div>
             ))}
           </div>
-        </>
+
+        </div>
       ) : (
         <p>Loading product details...</p>
       )}

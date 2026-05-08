@@ -1,0 +1,61 @@
+/* CONTAINER */
+.categories-container {
+  display: flex;
+  gap: 12px;
+
+  overflow-x: auto;
+  white-space: nowrap;
+
+  max-width: 100%;
+  padding-bottom: 8px;
+
+  scroll-behavior: smooth;
+}
+
+/* SCROLLBAR */
+.categories-container::-webkit-scrollbar {
+  height: 10px;
+}
+
+/* TRACK */
+.categories-container::-webkit-scrollbar-track {
+  background: #222;
+  border-radius: 10px;
+}
+
+/* THUMB */
+.categories-container::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 10px;
+}
+
+/* HOVER */
+.categories-container::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* CATEGORY */
+.category {
+  flex-shrink: 0;
+
+  padding: 8px 14px;
+  background: #969595;
+  border-radius: 20px;
+
+  cursor: pointer;
+  transition: 0.2s;
+
+  font-size: 14px;
+}
+
+/* HOVER */
+.category:hover {
+  background: #aaa5a5;
+  transform: scale(1.05);
+}
+
+/* ACTIVE */
+.category.active {
+  background: black;
+  color: white;
+}

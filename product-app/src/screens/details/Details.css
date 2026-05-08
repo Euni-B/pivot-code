@@ -105,3 +105,38 @@ p {
   font-weight: bold;
   margin-top: 5px;
 }
+/* PAGE WRAPPER */
+.details-page {
+  background: #f5f5f5;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* MAIN CARD */
+.details-card {
+  width: 100%;
+  max-width: 1100px; /* feels like a real product page */
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+.details-container {
+  padding: 40px;
+}
+
+/* separate reviews visually */
+.reviews-section {
+  border-top: 1px solid #eee;
+  padding: 30px 40px;
+}
+@media (max-width: 768px) {
+  .details-container {
+    flex-direction: column;
+  }
+
+  .main-image {
+    height: 250px;
+  }
+}

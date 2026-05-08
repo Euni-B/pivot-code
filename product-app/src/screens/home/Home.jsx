@@ -3,49 +3,60 @@ import ProductCard from "../product-card/ProductCard";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
-function Home() {
+function Home({ selectedCategory, query, setQuery }) {
   const [products, setProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState();
+  const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("");
-
 
   const handleSearch = () => {
-    setQuery(search); // THIS triggers everything
+    setQuery(search.trim());
   };
 
-
-
-  // ASYNC gives ability to AWAIT
+  // 1. FETCH ONCE
   useEffect(() => {
     const fetchProducts = async () => {
-      setLoading(true);
-      setError(null);
-
       try {
-        let url = "https://dummyjson.com/products";
+        setLoading(true);
 
-        if (query) {
-          url = `https://dummyjson.com/products/search?q=${query}`;
-        }
-
-        const res = await fetch(url);
+        const res = await fetch("https://dummyjson.com/products");
         const data = await res.json();
 
+        setAllProducts(data.products);
         setProducts(data.products);
       } catch (err) {
-        setError(err.message);
+        setError(err.message || "Something went wrong");
       } finally {
         setLoading(false);
       }
     };
 
     fetchProducts();
-  }, [query]);
+  }, []);
 
+  // 2. FILTER (SEARCH + CATEGORY)
+  useEffect(() => {
+    let filtered = [...allProducts];
 
-  // loading state ui 
+    // SEARCH
+    if (query) {
+      filtered = filtered.filter((p) =>
+        p.title.toLowerCase().includes(query.toLowerCase())
+      );
+    }
+
+    // CATEGORY
+    if (selectedCategory && selectedCategory !== "all") {
+      filtered = filtered.filter(
+        (p) => p.category === selectedCategory
+      );
+    }
+
+    setProducts(filtered);
+  }, [query, selectedCategory, allProducts]);
+
+  // 3. LOADING STATE
   if (loading) {
     return (
       <div>
@@ -55,7 +66,7 @@ function Home() {
     );
   }
 
-  // error state ui 
+  // 4. ERROR STATE
   if (error) {
     return (
       <div>
@@ -67,38 +78,34 @@ function Home() {
 
   return (
     <div className="home-container">
-    <div className="home-header">
-      <h1>Product Store</h1>
+      <div className="home-header">
+        <div className="search-bar">
+          <span>🔍</span>
 
-      <div className="search-bar">
-        <span>🔍</span>
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search products..."
-        />
-        <button onClick={handleSearch}>Search</button>
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search products..."
+          />
+
+          <button onClick={handleSearch}>Search</button>
+        </div>
+      </div>
+
+      {/* PRODUCTS */}
+      <div className="product-grid">
+        {products.map((product) => (
+          <Link
+            key={product.id}
+            to={`/product/${product.id}`}
+            style={{ textDecoration: "none" }}
+          >
+            <ProductCard product={product} />
+          </Link>
+        ))}
       </div>
     </div>
-
-{/* PRODUCT GRID */ }
-  <div className="product-grid">
-    {products.map(product => (
-      <Link
-        key={product.id}
-        to={`product/${product.id}`}
-        style={{ textDecoration: "none" }}>
-        <ProductCard
-          key={product.id}
-          product={product}
-        />
-      </Link>
-
-    ))}
-  </div>
-    </div >
   );
 }
-
 export default Home;
