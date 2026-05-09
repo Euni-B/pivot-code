@@ -14,13 +14,17 @@ function Home({ selectedCategory, query, setQuery }) {
     setQuery(search.trim());
   };
 
+
+
   // 1. FETCH ONCE
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
 
-        const res = await fetch("https://dummyjson.com/products");
+
+        const limit = 194; // Adjust as needed
+        const res = await fetch(`https://dummyjson.com/products?limit=${limit}`);
         const data = await res.json();
 
         setAllProducts(data.products);

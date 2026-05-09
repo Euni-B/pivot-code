@@ -1,8 +1,11 @@
 import "./Cart.css";
 import { useCart } from "../../context/CartContext";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
+
+    const navigate = useNavigate();
     const {
         cart,
         increaseQty,
@@ -101,7 +104,10 @@ function Cart() {
                         </span>
                     </div>
 
-                    <button className="checkout-btn">
+                    <button
+                        className="checkout-btn"
+                        onClick={() => navigate("/checkout")}
+                    >
                         Proceed to Checkout
                     </button>
 

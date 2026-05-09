@@ -6,7 +6,7 @@ import Home from "./screens/home/Home";
 import Details from "./screens/details/Details";
 import Header from "./components/header/Header";
 import Cart from "./screens/cart/Cart";
-
+import Checkout from "./screens/checkout/Checkout";
 import { CartProvider } from "./context/CartContext"; // ✅ ADD THIS
 
 function App() {
@@ -15,20 +15,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then(res => res.json())
-      .then(data => {
-        if (selectedCategory === "all") {
-          setProducts(data.products);
-        } else {
-          const filtered = data.products.filter(
-            (product) => product.category === selectedCategory
-          );
-          setProducts(filtered);
-        }
-      });
-  }, [selectedCategory]);
+  
 
   return (
     <CartProvider> 
@@ -53,6 +40,7 @@ function App() {
 
         <Route path="/product/:id" element={<Details />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
 
     </CartProvider>
