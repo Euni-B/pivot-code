@@ -1,7 +1,10 @@
 import "./ProductCard.css";
+import { useCart } from "../../context/CartContext";
+import { toast } from "react-toastify";
 
 
 function ProductCard({ product }) {
+  const { addToCart } = useCart();
   let stockStatus = "";
 
   if (product.stock === 0) {
@@ -21,6 +24,18 @@ function ProductCard({ product }) {
       <p>{stockStatus}</p>
       <p>${product.price}</p>
       <p>⭐ {product.rating}</p>
+      <button
+        className="card-cart-btn"
+        onClick={(e) => {
+          e.preventDefault(); // stops Link navigation
+
+          addToCart(product);
+
+          toast.success("Added to cart");
+        }}
+      >
+        Add to Cart
+      </button>
     </div>
   );
 }

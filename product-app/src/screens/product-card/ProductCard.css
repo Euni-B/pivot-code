@@ -26,3 +26,24 @@
   transform: translateY(-6px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
+.card-cart-btn {
+  width: 100%;
+
+  margin-top: 10px;
+
+  padding: 10px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: black;
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.card-cart-btn:hover {
+  background: #333;
+}

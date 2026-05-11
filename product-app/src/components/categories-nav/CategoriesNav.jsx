@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./CategoriesNav.css";
 
-function CategoriesNav({ setSelectedCategory }) {
+function CategoriesNav({
+  selectedCategory,
+  setSelectedCategory
+}) {
+
   const [categories, setCategories] = useState([]);
-  const [active, setActive] = useState("all");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("https://dummyjson.com/products/categories")
@@ -12,8 +17,10 @@ function CategoriesNav({ setSelectedCategory }) {
   }, []);
 
   const handleClick = (slug) => {
-    setActive(slug);
+
     setSelectedCategory(slug);
+    setQuery("");
+    navigate("/");
   };
 
   return (
@@ -21,9 +28,10 @@ function CategoriesNav({ setSelectedCategory }) {
 
       {/* ALL */}
       <span
-        className={`category ${
-          active === "all" ? "active" : ""
-        }`}
+        className={`category ${selectedCategory === "all"
+            ? "active"
+            : ""
+          }`}
         onClick={() => handleClick("all")}
       >
         All
@@ -33,9 +41,10 @@ function CategoriesNav({ setSelectedCategory }) {
       {categories.map((cat) => (
         <span
           key={cat.slug}
-          className={`category ${
-            active === cat.slug ? "active" : ""
-          }`}
+          className={`category ${selectedCategory === cat.slug
+              ? "active"
+              : ""
+            }`}
           onClick={() => handleClick(cat.slug)}
         >
           {cat.name}

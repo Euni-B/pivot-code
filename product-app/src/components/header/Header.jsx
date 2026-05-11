@@ -3,7 +3,11 @@ import CategoriesNav from "../categories-nav/CategoriesNav";
 import CartButton from "../cart-button/CartButton";
 import "./Header.css";
 
-function Header({ setSelectedCategory, setQuery }) {
+function Header({
+  setSelectedCategory,
+  setQuery,
+  resetSearch,
+  selectedCategory }) {
 
   const handleHomeClick = () => {
     setSelectedCategory("all");
@@ -19,11 +23,14 @@ function Header({ setSelectedCategory, setQuery }) {
         <h1 className="header-title">Eunice's Shop</h1>
 
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-
           <Link
-            to="/"
             className="home-link"
-            onClick={handleHomeClick}
+            to="/"
+            onClick={() => {
+              setSelectedCategory("all");
+              setQuery("");
+             
+            }}
           >
             Home
           </Link>
@@ -37,7 +44,10 @@ function Header({ setSelectedCategory, setQuery }) {
       {/* BOTTOM ROW */}
       <div className="header-bottom">
         <CategoriesNav
+          selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
+          setQuery={setQuery}
+          resetSearch={resetSearch}
         />
       </div>
 

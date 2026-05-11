@@ -3,15 +3,28 @@ import ProductCard from "../product-card/ProductCard";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
-function Home({ selectedCategory, query, setQuery }) {
+function Home({
+  selectedCategory,
+  query,
+  setQuery,
+  setSelectedCategory
+}) {
   const [products, setProducts] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
 
-  const handleSearch = () => {
-    setQuery(search.trim());
+
+  const handleClick = (slug) => {
+    setSelectedCategory(slug);
+
+    // only clear search if it exists
+    if (setQuery) {
+      setQuery("");
+    }
+
+    navigate("/");
   };
 
 
@@ -60,6 +73,12 @@ function Home({ selectedCategory, query, setQuery }) {
     setProducts(filtered);
   }, [query, selectedCategory, allProducts]);
 
+  useEffect(() => {
+    if (!query) {
+      setSearch("");
+    }
+  }, [query]);
+
   // 3. LOADING STATE
   if (loading) {
     return (
@@ -93,7 +112,14 @@ function Home({ selectedCategory, query, setQuery }) {
             placeholder="Search products..."
           />
 
-          <button onClick={handleSearch}>Search</button>
+          <button
+            onClick={() => {
+              setQuery(search.trim());
+              
+            }}
+          >
+            Search
+          </button>
         </div>
       </div>
 

@@ -15,27 +15,32 @@ function App() {
   const [products, setProducts] = useState([]);
   const [query, setQuery] = useState("");
 
-  
+
+  const resetSearch = () => {
+    setQuery("");
+    setSelectedCategory("all");
+  };
+
+
 
   return (
-    <CartProvider> 
-    { <ToastContainer /> }
+    <CartProvider>
+      {<ToastContainer />}
 
       <Header
         setSelectedCategory={setSelectedCategory}
         setQuery={setQuery}
+        resetSearch={resetSearch}
       />
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              selectedCategory={selectedCategory}
-              query={query}
-              setQuery={setQuery}
-            />
-          }
+        <Route path="/" element={<Home
+          selectedCategory={selectedCategory}
+          query={query}
+          setQuery={setQuery}
+          setSelectedCategory={setSelectedCategory}
+        />
+        }
         />
 
         <Route path="/product/:id" element={<Details />} />
