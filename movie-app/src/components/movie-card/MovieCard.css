@@ -1,6 +1,6 @@
 .movie-card {
     width: 240px;
-
+    position:relative;
     background-color: #1f1b2e;
 
     border-radius: 20px;
@@ -51,4 +51,14 @@
     line-height: 1.5;
 
     color: #e6dccf;
+}
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 }
