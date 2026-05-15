@@ -1,22 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Movie } from "../types/movie";
 import MovieCard from "../components/movie-card/MovieCard";
 import { searchMovies } from "../api/tmdb";
 
 export default function Search() {
   const [query, setQuery] = useState("");
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Movie[]>(() => {
+    const saved = localStorage.getItem("searchResults");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("searchResults", JSON.stringify(movies));
+  }, [movies]);
 
   async function handleSearch() {
     if (!query.trim()) return;
 
-    try {
-      const results = await searchMovies(query);
-      setMovies(results);
-    } catch (error) {
-      console.error(error);
-    }
+    const results = await searchMovies(query);
+    setMovies(results);
   }
+
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem("searchResults");
+    };
+  }, []);
 
   return (
     <div>

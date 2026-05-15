@@ -1,4 +1,5 @@
 import { useFavorites } from "../../context/FavoritesContext";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   movie: any;
@@ -6,11 +7,14 @@ type Props = {
 
 export default function HeroMovie({ movie }: Props) {
   const { favorites, addFavorite, removeFavorite } = useFavorites();
+  const navigate = useNavigate();
 
   const isFavorite = favorites.some((m) => m.id === movie.id);
 
   return (
-    <div className="hero-movie">
+    <div className="hero-movie"
+      onClick={() => navigate(`/movie/${movie.id}`)}
+    >
 
       <img
         className="hero-backdrop"
@@ -27,11 +31,13 @@ export default function HeroMovie({ movie }: Props) {
           <p>{movie.overview}</p>
 
           <button
-            onClick={() =>
+            onClick={(e) => {
+              e.stopPropagation();
+
               isFavorite
                 ? removeFavorite(movie.id)
-                : addFavorite(movie)
-            }
+                : addFavorite(movie);
+            }}
           >
             {isFavorite ? "❤️ Remove" : "🤍 Add to Favorites"}
           </button>
