@@ -1,27 +1,28 @@
 import { Link } from "react-router-dom";
-import { Search } from "lucide-react"; 
+import { Search } from "lucide-react";
 import './Header.css';
 function Header() {
   return (
     <header className="header">
       {/* LEFT */}
       <div className="logo">
-        <Link to="/">MovieApp</Link>
+        <Link to="/">MovieDB</Link>
       </div>
 
       {/* MIDDLE */}
       <nav className="nav-links">
+        
         <Link to="/">Home</Link>
 
         <Link to="/favorites">Favorites</Link>
 
         <Link to="/popular">Popular</Link>
 
-        <Link to="now-playing">Now Playing</Link>
+        <Link to="/now-playing">Now Playing</Link>
 
-        <Link to="/up-coming">Upcoming</Link>
+        <Link to="/upcoming">Upcoming</Link>
 
-        <Link to="/about">About</Link>
+
       </nav>
 
       {/* RIGHT */}

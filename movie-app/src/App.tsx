@@ -6,6 +6,7 @@ import UpComing from "./screens/UpComing";
 import NowPlaying from "./screens/NowPlaying";
 import Popular from "./screens/Popular";
 import Search from "./screens/Search";
+import MovieDetails from "./components/movie-details/MovieDetails";
 
 function App() {
   return (
@@ -24,9 +25,11 @@ function App() {
 
         <Route path="/now-playing" element={<NowPlaying/>}/>
 
-        <Route path="/screens" element={< UpComing />} />
+        <Route path="/upcoming" element={< UpComing />} />
 
          <Route path="/search" element={<Search />} />
+
+         <Route path="/movie/:id" element={<MovieDetails />} />
       </Routes>
 
     </>

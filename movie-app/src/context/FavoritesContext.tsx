@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 type Movie = {
   id: number;
@@ -15,11 +15,19 @@ type FavoritesContextType = {
 const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
-  const [favorites, setFavorites] = useState<Movie[]>([]);
+  const [favorites, setFavorites] = useState<Movie[]>(() => {
+    const stored = localStorage.getItem("favorites");
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  // SAVE to localStorage whenever favorites change
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   function addFavorite(movie: Movie) {
     setFavorites((prev) => {
-      const exists = prev.find((m) => m.id === movie.id);
+      const exists = prev.some((m) => m.id === movie.id);
       if (exists) return prev;
       return [...prev, movie];
     });
@@ -30,7 +38,9 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <FavoritesContext.Provider value={{ favorites, addFavorite, removeFavorite }}>
+    <FavoritesContext.Provider
+      value={{ favorites, addFavorite, removeFavorite }}
+    >
       {children}
     </FavoritesContext.Provider>
   );

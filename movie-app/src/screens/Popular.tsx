@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import type { Movie } from "../types/movie.ts";
-import MovieCard from "../components/movie-card/MovieCard.tsx";
-import { getPopularMovies } from "../api/tmdb.ts";
+import type { Movie } from "../types/movie";
+import MovieCard from "../components/movie-card/MovieCard";
+import HeroMovie from "../components/hero-movie/HeroMovie";
+import { getPopularMovies } from "../api/tmdb";
 
 function Popular() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -17,13 +18,21 @@ function Popular() {
 
   return (
     <div>
+
       <h1>Popular Movies</h1>
 
+      {/* HERO SECTION */}
+      {movies.length > 0 && (
+        <HeroMovie movie={movies[0]} />
+      )}
+
+      {/* GRID SECTION */}
       <div className="movie-grid">
-        {movies.map((movie) => (
+        {movies.slice(1).map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
+
     </div>
   );
 }
