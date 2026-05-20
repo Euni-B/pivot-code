@@ -1,0 +1,25 @@
+### Home
+
+GET http://localhost:3000/
+
+### About
+
+GET http://localhost:3000/about
+
+### Contact
+
+GET http://localhost:3000/contact
+
+### Users
+
+GET http://localhost:3000/users/123999
+
+### Create User
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "Eunice",
+  "password": "123456"
+}
