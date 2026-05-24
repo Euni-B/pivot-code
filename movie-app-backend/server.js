@@ -61,7 +61,7 @@ app.post("/register", (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    return res.status(400).json({ error: "Username and password are required." });
+    return res.status(400).json({ message: "Username and password are required." });
   }
 
   const filePath = "users.json";
@@ -94,7 +94,7 @@ app.post("/login", (req, res) => {
 
   if (!username || !password) {
     return res.status(400).json({
-      error: "Username and password are required."
+      message: "Username and password are required."
     });
   }
 
@@ -104,7 +104,7 @@ app.post("/login", (req, res) => {
     // If no file, no users exist
     if (!fs.existsSync(filePath)) {
       return res.status(404).json({
-        error: "No users found."
+        message: "No users found."
       });
     }
 
@@ -117,13 +117,13 @@ app.post("/login", (req, res) => {
 
     if (!user) {
       return res.status(404).json({
-        error: "User not found."
+        message: "User not found."
       });
     }
 
     if (user.password !== password) {
       return res.status(401).json({
-        error: "Incorrect password."
+        message: "Incorrect password."
       });
     }
 
@@ -135,7 +135,7 @@ app.post("/login", (req, res) => {
 
   } catch (err) {
     return res.status(500).json({
-      error: "Server error."
+      message: "Server error."
     });
   }
 });
