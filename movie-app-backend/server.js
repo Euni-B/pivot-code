@@ -2,16 +2,23 @@
 const express = require('express');
 // import file system
 const fs = require("fs");
+// allow frontend communication
+const cors = require("cors");
 
 // create app
 const app = express();
 // ability to parse JSON
 app.use(express.json());
+app.use(cors());
 
+
+// ---------ROUTES BEGIN----------
 
 //Route 1 get info
 app.get("/", (req, res) => {
-  res.send("Welcome to the best database in the world!!!!")
+  res.json({
+    message: "Welcome to Eunice's database!"
+  })
 })
 
 

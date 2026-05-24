@@ -3,9 +3,24 @@ import type { Movie } from "../types/movie";
 import MovieCard from "../components/movie-card/MovieCard";
 import HeroMovie from "../components/hero-movie/HeroMovie";
 import { getTopRated } from "../api/tmdb";
+  
 
 export default function Home() {
   const [movies, setMovies] = useState<Movie[]>([]);
+  // const [data, setData] = useState(null); 
+  // const [error, setError] = useState(null); 
+
+  useEffect(() => {
+    fetch("http://localhost:3000/")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Server response", data);
+    })
+    .catch((err) => {
+      console.error("Fetch error", err);
+    });
+  }, []);
+  
 
   useEffect(() => {
     getTopRated()

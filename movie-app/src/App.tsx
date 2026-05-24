@@ -7,6 +7,7 @@ import NowPlaying from "./screens/NowPlaying";
 import Popular from "./screens/Popular";
 import Search from "./screens/Search";
 import MovieDetails from "./components/movie-details/MovieDetails";
+import Login from "./screens/Login";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
          <Route path="/search" element={<Search />} />
 
          <Route path="/movie/:id" element={<MovieDetails />} />
+
+         <Route path="/login" element={<Login />} />
       </Routes>
 
     </>

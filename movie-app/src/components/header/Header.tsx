@@ -11,7 +11,7 @@ function Header() {
 
       {/* MIDDLE */}
       <nav className="nav-links">
-        
+
         <Link to="/">Home</Link>
 
         <Link to="/favorites">Favorites</Link>
@@ -29,6 +29,9 @@ function Header() {
       <div className="search-icon">
         <Link to="/search">
           <Search size={24} />
+        </Link>
+        <Link to="/login" className="login-btn">
+          Login
         </Link>
       </div>
     </header>

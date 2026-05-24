@@ -112,3 +112,45 @@
   display: flex;
   align-items: center;
 }
+
+/* LOGIN BUTTON */
+
+.login-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+
+  padding: 0.65rem 1.3rem;
+  margin: 30px;
+
+  border: 2px solid #9f8cff;
+  border-radius: 999px;
+
+  background: transparent;
+
+  color: #f8f4ea;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #9f8cff;
+
+  color: #14111f;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 12px rgba(159, 140, 255, 0.55);
+}

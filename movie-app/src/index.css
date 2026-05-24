@@ -15,6 +15,7 @@ body {
   background-color: #14111f;
   color: #f8f4ea;
   font-family: 'Outfit', sans-serif;
+  text-align: center;
 }
 
 .counter {
@@ -547,4 +548,123 @@ body {
   .hero-content p {
     font-size: 1rem;
   }
+}
+
+/* REGISTER PAGE */
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+
+  max-width: 400px;
+
+  margin: 4rem auto;
+
+  padding: 2rem;
+
+  background-color: #14111f;
+
+  border: 1px solid rgba(159, 140, 255, 0.2);
+  border-radius: 16px;
+}
+
+
+/* TITLE */
+
+.register-container h1 {
+  color: #f8f4ea;
+
+  text-align: center;
+
+  margin-bottom: 1rem;
+}
+
+
+/* INPUTS */
+
+.register-container input {
+  padding: 0.9rem 1rem;
+  margin: 10px ;
+  border: 2px solid rgba(159, 140, 255, 0.25);
+  border-radius: 10px;
+
+  background-color: #1d192b;
+
+  color: #f8f4ea;
+
+  font-size: 1rem;
+
+  outline: none;
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.register-container input:focus {
+  border-color: #9f8cff;
+
+  box-shadow:
+    0 0 12px rgba(159, 140, 255, 0.35);
+}
+
+
+/* BUTTON */
+
+.register-container button {
+  margin-top: 1rem;
+
+  padding: 0.9rem;
+  margin: 10px;
+  border: 2px solid #9f8cff;
+  border-radius: 999px;
+
+  background: transparent;
+
+  color: #f8f4ea;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+.register-container button:hover {
+  background-color: #9f8cff;
+
+  color: #14111f;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 12px rgba(159, 140, 255, 0.55);
+
+}
+
+.switch-text {
+  text-align: center;
+  margin-top: 1rem;
+  color: #f8f4ea;
+  font-size: 0.9rem;
+}
+
+.switch-link {
+  color: #4da3ff;
+  cursor: pointer;
+  font-weight: 500;
+
+  transition: 0.2s ease;
+}
+
+.switch-link:hover {
+  text-decoration: underline;
+  color: #7bbcff;
 }
