@@ -1,34 +1,56 @@
-const tasks = [
-    {
-        id: 1,
-        title: "Finish React login page",
-        status: "In Progress",
-    },
-    {
-        id: 2,
-        title: "Study React Router",
-        status: "Completed",
-    },
-    {
-        id: 3,
-        title: "Build Home Page",
-        status: "Todo",
-    },
+import Header from "../components/Header";
+import Filterbar from "../components/Filterbar";
+import TaskCard from "../components/TaskCard";
+import "./Home.css";
+
+export type Task = {
+  id: number;
+  title: string;
+  status: string;
+};
+
+const tasks: Task[] = [
+  {
+    id: 1,
+    title: "buy milk",
+    status: "Doing",
+  },
+  {
+    id: 2,
+    title: "read a book",
+    status: "To Do",
+  },
+  {
+    id: 3,
+    title: "buy a car",
+    status: "Done",
+  },
 ];
 
 function Home() {
-    return (
-        <div>
-            <h1>🐱 Task Manager</h1>
+  return (
+    <div className="home-container">
+      <div className="home-card">
 
-            {tasks.map((task) => (
-                <div key={task.id}>
-                    <h3>{task.title}</h3>
-                    <p>Status: {task.status}</p>
-                </div>
-            ))}
+        <Header />
+
+        <div className="task-top-bar">
+          <button className="add-task-btn">
+            Add Task
+          </button>
         </div>
-    );
+
+        <Filterbar />
+
+        <div className="task-list">
+          {tasks.map((task) => (
+            <TaskCard key={task.id} task={task} />
+          ))}
+        </div>
+
+      </div>
+    </div>
+  );
 }
 
 export default Home;
