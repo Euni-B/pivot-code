@@ -9,9 +9,12 @@ interface User {
 
 interface LoginProps {
   setIsLoggedIn: (value: boolean) => void;
+  setUsername: (value: string) => void;
 }
-
-const Login: React.FC<LoginProps> = ({ setIsLoggedIn }) => {
+const Login = ({
+  setIsLoggedIn,
+  setUsername,
+}: LoginProps)  =>{
   const [isRegister, setIsRegister] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,10 +47,13 @@ const Login: React.FC<LoginProps> = ({ setIsLoggedIn }) => {
       const user = users.find(
         (u) => u.email === email && u.password === password
       );
+    
       if (user) {
         alert("Login successful!");
         setIsLoggedIn(true);
+        setUsername(email); // save email as username
         localStorage.setItem("isLoggedIn", "true"); // persist login
+        localStorage.setItem("username", email);
         navigate("/home");
       } else {
         alert("Invalid email or password");

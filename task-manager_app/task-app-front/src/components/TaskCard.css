@@ -1,0 +1,103 @@
+.task-card {
+  background: #cce7f8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 20px;
+  margin: 25px;
+
+  border-radius: 14px;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+
+  transition: all 0.25s ease;
+  border: 1px solid rgba(35, 61, 77, 0.08);
+}
+
+/* 🔥 hover lift effect */
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  border-color: #fcca46;
+}
+
+/* LEFT SIDE */
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.task-title {
+  font-size: 16px;
+  color: #233d4d;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* =========================
+   STATUS PILL SYSTEM (cleaner + more consistent)
+========================= */
+
+.status-pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  min-width: 72px;
+  text-align: center;
+
+  transition: all 0.2s ease;
+}
+
+/* TO DO = warm alert (yellow) */
+.status-pill.to-do {
+  background-color: #fcca46;
+  color: #233d4d;
+}
+
+/* DOING = active state (pumpkin = in progress energy) */
+.status-pill.doing {
+  background-color: #fe7f2d;
+  color: white;
+}
+
+/* DONE = calm success (olive/green) */
+.status-pill.done {
+  background-color: #a1c181;
+  color: #233d4d;
+}
+
+/* optional hover polish */
+.status-pill:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   TRASH BUTTON
+========================= */
+
+.trash-btn {
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  color: #fe7f2d;
+
+  transition: all 0.2s ease;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+/* better than raw red flash */
+.trash-btn:hover {
+  color: rgb(250, 31, 31);
+  background: #fe7f2d;
+  transform: scale(1.1);
+}

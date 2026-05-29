@@ -2,56 +2,54 @@ import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./screens/Login";
 import Home from "./screens/Home";
-import Header from "./components/Header";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
 
-  // Read login status from localStorage on load
   useEffect(() => {
-    const stored = localStorage.getItem("isLoggedIn");
-    if (stored === "true") {
+    const storedLogin = localStorage.getItem("isLoggedIn");
+    const storedUser = localStorage.getItem("username");
+    if (storedLogin === "true" && storedUser) {
       setIsLoggedIn(true);
+      setUsername(storedUser);
     }
   }, []);
 
   return (
     <div className="app-layout">
-      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-
-      <div className="page-content">
-        <Routes>
-          {/* Login Route */}
-          <Route
-            path="/login"
-            element={
-              isLoggedIn ? (
-                <Navigate to="/home" replace />
-              ) : (
-                <Login setIsLoggedIn={setIsLoggedIn} />
-              )
-            }
-          />
-
-          {/* Home Route */}
-          <Route
-            path="/home"
-            element={
-              isLoggedIn ? <Home /> : <Navigate to="/login" replace />
-            }
-          />
-
-          {/* Catch-all */}
-          <Route
-            path="*"
-            element={
-              <Navigate to={isLoggedIn ? "/home" : "/login"} replace />
-            }
-          />
-        </Routes>
-      </div>
+      <Routes>
+        <Route
+          path="/login"
+          element={
+            isLoggedIn ? (
+              <Navigate to="/home" replace />
+            ) : (
+              <Login setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />
+            )
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            isLoggedIn ? (
+              <Home
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+                username={username}
+              />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+        <Route
+          path="*"
+          element={<Navigate to={isLoggedIn ? "/home" : "/login"} replace />}
+        />
+      </Routes>
     </div>
   );
 }
 
-export default App;
+export default App; 

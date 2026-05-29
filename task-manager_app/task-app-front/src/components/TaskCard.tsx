@@ -1,5 +1,6 @@
-import { FaTrash, FaRegCircle } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import { type Task } from "../screens/Home";
+import "./TaskCard.css";
 
 type TaskCardProps = {
   task: Task;
@@ -10,15 +11,23 @@ function TaskCard({ task }: TaskCardProps) {
     <div className="task-card">
 
       <div className="task-left">
-        <div className="task-icon">
-          <FaRegCircle />
-        </div>
 
-        <p>{task.title}</p>
+        <span
+          className={`status-pill ${task.status
+            .toLowerCase()
+            .replace(" ", "-")}`}
+        >
+          {task.status}
+        </span>
+
+        <p className="task-title">
+          {task.title}
+        </p>
+
       </div>
 
       <button className="trash-btn">
-        <FaTrash />
+        <FaTrashAlt />
       </button>
 
     </div>
