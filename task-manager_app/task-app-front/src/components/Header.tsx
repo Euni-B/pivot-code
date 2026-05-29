@@ -1,17 +1,24 @@
-function Header() {
+interface HeaderProps {
+  isLoggedIn: boolean;
+  setIsLoggedIn: (value: boolean) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ isLoggedIn, setIsLoggedIn }) => {
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("isLoggedIn");
+  };
+
   return (
-    <div className="header">
-      <h2>Task Manager</h2>
-
-      <div className="header-right">
-        <p>Hello, Eunice</p>
-
-        <button className="logout-btn">
+    <header className="app-header">
+      <h2>My App</h2>
+      {isLoggedIn && (
+        <button onClick={handleLogout} style={{ marginLeft: "auto" }}>
           Logout
         </button>
-      </div>
-    </div>
+      )}
+    </header>
   );
-}
+};
 
 export default Header;
