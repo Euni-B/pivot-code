@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./screens/Login";
 import Home from "./screens/Home";
+
+type LoginComponent = React.FC<{ setIsLoggedIn: (value: boolean) => void; setUsername: (value: string) => void }>;
+const LoginComponent = Login as LoginComponent;
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,7 +28,7 @@ function App() {
             isLoggedIn ? (
               <Navigate to="/home" replace />
             ) : (
-              <Login setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />
+              <LoginComponent setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />
             )
           }
         />
