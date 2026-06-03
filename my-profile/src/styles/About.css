@@ -1,0 +1,108 @@
+.about-page {
+  position: relative;
+
+  min-height: 100vh;
+  padding: 100px 20px 60px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: white;
+}
+
+.about-diamond {
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transform: rotate(45deg);
+
+  top: 40%;
+  left: 50%;
+  transform-origin: center;
+  translate: -50% -50%;
+
+  z-index: 0;
+
+  box-shadow:
+    0 0 80px rgba(255, 255, 255, 0.04),
+    0 0 140px rgba(255, 255, 255, 0.02);
+}
+
+.about-header {
+  position: relative;
+  z-index: 2;
+
+  margin-bottom: 40px;
+}
+
+.about-header h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+
+  text-align: center;
+
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 0.08);
+}
+
+.about-grid {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  gap: 40px;
+
+  justify-content: center;
+  align-items: flex-start;
+
+  margin-bottom: 50px;
+}
+
+.about-card {
+  width: 260px;
+
+  padding: 18px 20px;
+
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.about-card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.about-card ul {
+  padding-left: 18px;
+  line-height: 1.6;
+
+  opacity: 0.8;
+}
+.about-bottom {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+
+  max-width: 500px;
+}
+
+.about-bottom h2 {
+  margin-bottom: 8px;
+}
+
+.about-bottom p {
+  opacity: 0.75;
+  line-height: 1.6;
+}
