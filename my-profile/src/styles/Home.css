@@ -1,0 +1,157 @@
+.home-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 4rem 2rem;
+}
+
+.hero-container {
+    width: 100%;
+    max-width: 1000px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 5rem;
+
+    padding: 4rem;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+.hero-glow {
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    border-radius: 50%;
+
+    background-color: var(--accent);
+
+    opacity: 0.15;
+
+    filter: blur(70px);
+
+    z-index: 0;
+}
+
+.image-placeholder {
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.3);
+
+    border: 2px solid rgba(255, 255, 255, 0.4);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--accent);
+
+    font-weight: 600;
+
+    position: relative;
+    z-index: 1;
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1.5rem;
+
+    max-width: 500px;
+}
+
+/* name  */
+.hero-right h1 {
+    font-size: 4rem;
+
+    line-height: 1;
+
+    color: var(--text-primary);
+
+    font-weight: 700;
+}
+
+/* tagline  */
+.hero-right p {
+    font-size: 1.1rem;
+
+    color: var(--accent);
+
+    letter-spacing: 1px;
+}
+
+/* diamond backglow  */
+.avatar-wrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 2;
+}
+.diamond-bg {
+  position: absolute;
+
+  width: 110px;
+  height: 110px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  transform: rotate(45deg);
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 0 25px rgba(255, 255, 255, 0.04),
+    0 0 60px rgba(255, 255, 255, 0.02);
+
+  z-index: 0;
+}
+.profile-avatar {
+  position: relative;
+
+  width: 95px;
+  height: 95px;
+
+  border-radius: 50%;
+  object-fit: cover;
+
+  z-index: 2;
+
+  border: 2px solid rgba(255, 255, 255, 0.18);
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* bio styling  */
+.profile-bio {
+  margin-top: 10px;
+
+  font-size: 0.95rem;
+  line-height: 1.5;
+
+  opacity: 0.75;
+  max-width: 320px;
+}
