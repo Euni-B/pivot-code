@@ -8,7 +8,7 @@
   flex-direction: column;
   align-items: center;
 
-  color: white;
+   color: var(--text-primary);
 }
 
 .about-diamond {

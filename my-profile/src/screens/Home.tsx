@@ -31,6 +31,26 @@ function Home() {
                     <p className="profile-bio">
                         I build clean, modern web experiences with React and a focus on smooth UI design.
                     </p>
+
+                    <div className="social-links">
+                        <a
+                            href="https://github.com/Euni-B/pivot-code"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            GitHub
+                        </a>
+
+                        <span className="social-diamond"></span>
+
+                        <a
+                            href="https://www.linkedin.com/in/eunice-bontreger-030953124/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            LinkedIn
+                        </a>
+                    </div>
                 </div>
 
             </div>

@@ -44,7 +44,7 @@
 
 .nav-center a,
 .nav-right a {
-  color: rgba(255, 255, 255, 0.75);
+ color: var(--text-primary);
   text-decoration: none;
 
   font-size: 0.95rem;
@@ -55,14 +55,14 @@
 }
 .nav-center a:hover,
 .nav-right a:hover {
-  color: white;
+  color: var(--text-primary);
 
   text-shadow:
     0 0 10px rgba(255, 255, 255, 0.15),
     0 0 20px rgba(255, 255, 255, 0.08);
 }
 .nav-center a.active {
-  color: white;
+  color: var(--text-primary);
 }
 
 .nav-center a.active::after {
@@ -83,7 +83,7 @@
   font-weight: 600;
   letter-spacing: 1px;
 
-  color: rgba(255, 255, 255, 0.85);
+   color: var(--text-primary);
 
   text-shadow:
     0 0 10px rgba(255, 255, 255, 0.08);
