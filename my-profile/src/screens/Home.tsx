@@ -14,14 +14,14 @@ function Home() {
 
                         <img
                             className="profile-avatar"
-                            src="/your-photo.jpg"
+                            src="/headshot.jpg"
                             alt="Profile"
                         />
                     </div>
                 </div>
 
                 <div className="hero-right">
-                    <h1>Your Name</h1>
+                    <h1>Eunice Bontreger</h1>
 
                     <p className="hero-tagline">
                         Designer • Developer • Creator
