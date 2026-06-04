@@ -1,4 +1,5 @@
 import "../styles/Home.css";
+import headshot from "../assets/headshot.jpg";
 
 function Home() {
     return (
@@ -14,7 +15,7 @@ function Home() {
 
                         <img
                             className="profile-avatar"
-                            src="/headshot.jpg"
+                            src={headshot}
                             alt="Profile"
                         />
                     </div>

@@ -101,8 +101,8 @@
 /* diamond backglow  */
 .avatar-wrapper {
   position: relative;
-  width: 140px;
-  height: 140px;
+  width: 220px;
+  height: 220px;
 
   display: flex;
   align-items: center;
@@ -113,10 +113,10 @@
 .diamond-bg {
   position: absolute;
 
-  width: 110px;
-  height: 110px;
+  width: 180px;
+  height: 180px;
 
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
 
   transform: rotate(45deg);
@@ -124,16 +124,15 @@
   border-radius: 10px;
 
   box-shadow:
-    0 0 25px rgba(255, 255, 255, 0.04),
-    0 0 60px rgba(255, 255, 255, 0.02);
-
+    0 0 60px rgba(255, 255, 255, 0.06),
+    0 0 120px rgba(255, 255, 255, 0.03);
   z-index: 0;
 }
 .profile-avatar {
   position: relative;
 
-  width: 95px;
-  height: 95px;
+  width: 140px;
+  height: 140px;
 
   border-radius: 50%;
   object-fit: cover;

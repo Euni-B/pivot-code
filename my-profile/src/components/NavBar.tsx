@@ -7,16 +7,23 @@ function NavBar() {
     return (
         <header className="navbar">
 
-            
+            <div className="nav-left">
+                <div className="logo">Portfolio</div>
+            </div>
 
-            <nav className="nav-center">
+
+
+
+            <nav className="nav-right">
                 <Link
                     to="/"
                     className={location.pathname === "/" ? "active" : ""}
                 >
                     Home
                 </Link>
-                </nav>
+
+                {/* <div className="footer-diamond"></div> */}
+
 
                 {/* <Link
                     to="/projects"
@@ -25,7 +32,7 @@ function NavBar() {
                     Projects
                 </Link> */}
 
-                <nav className="nav-right">
+
 
                 <Link
                     to="/about"
@@ -35,10 +42,10 @@ function NavBar() {
                 </Link>
             </nav>
 
-            
 
-                
-            
+
+
+
         </header>
     );
 }
