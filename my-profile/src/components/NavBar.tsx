@@ -8,7 +8,9 @@ function NavBar() {
         <header className="navbar">
 
             <div className="nav-left">
-                <div className="logo">Portfolio</div>
+                <div className="logo">
+                    ◆
+                </div>
             </div>
 
 
