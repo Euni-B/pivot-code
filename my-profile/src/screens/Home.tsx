@@ -1,9 +1,18 @@
 import "../styles/Home.css";
+import { Helmet } from "react-helmet-async";
 import headshot from "../assets/headshot.jpg";
 
 function Home() {
     return (
         <div className="home-page">
+
+            <Helmet>
+                <title>Eunice B. | Front-End Developer Portfolio</title>
+                <meta
+                    name="description"
+                    content="Portfolio of Eunice B., a front-end developer building responsive React, TypeScript, Tailwind, and full-stack web projects."
+                />
+            </Helmet>
             <div className="hero-container">
 
                 <div className="hero-left">
