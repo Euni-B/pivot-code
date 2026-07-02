@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "aos/dist/aos.css";
 
-
 :root {
   --background: #c9cebd;
   --secondary: #838e83;
@@ -12,26 +11,40 @@
   --black: #000000;
 
   --navbar-height: 80px;
-
   --border-radius: 24px;
-
   --container-width: 1100px;
 
-  font-family:
-    "Poppins",
-    sans-serif;
+  font-family: "Poppins", sans-serif;
 }
+
+@theme {
+  --color-background: var(--background);
+  --color-secondary: var(--secondary);
+  --color-text-primary: var(--text-primary);
+  --color-accent: var(--accent);
+  --color-white: var(--white);
+  --color-black: var(--black);
+
+  --font-body: "Poppins", sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--background);
   color: var(--text-primary);
-
   min-height: 100vh;
+  font-family: var(--font-body);
 }
+
 #root {
   min-height: 100vh;
 }
